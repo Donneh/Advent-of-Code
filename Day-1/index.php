@@ -1,6 +1,20 @@
 <?php
-$input = file_get_contents("input.txt");
+$content = file_get_contents("input.txt");
 
-echo substr_count($input, '(') - substr_count($input, ')');
+$result = substr_count($content, '(') - substr_count($content, ')');
 
-echo $result . PHP_EOL;
+function floorPosition($input, $floor) {
+    $character = 1;
+    for($i = 0; $i < strlen($input); $i++) {
+        if($input[$i] == '(') {
+            $character += 1;
+        } else {
+            $character -= 1;
+        }
+
+        if($character == $floor) {
+            return $i;
+        }
+    }
+}
+echo floorPosition($content, '-1') . PHP_EOL;
