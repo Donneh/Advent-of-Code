@@ -1,7 +1,4 @@
 <?php
-
-ini_set('max_execution_time', 300);
-
 function extractNumber($string) {
     preg_match_all('/([0-9])([0-9]*)/', $string, $result);
     return [
@@ -16,8 +13,9 @@ $file = file("input.txt");
 
 $array = [];
 for($i = 0; $i < 1000; $i++) {
-    $array[$i] = str_repeat('0', 1000);
+    $array[$i] = str_repeat('0,', 1000);
 }
+
 foreach($file as $line) {
 
     $pos = extractNumber($line);
@@ -25,19 +23,19 @@ foreach($file as $line) {
     for($i = $pos['y1']; $i <= $pos['y2']; $i++) {
         for($j = $pos['x1']; $j <= $pos['x2']; $j++) {
             if(strpos($line, 'toggle') !== false) {
-                if($array[$i][$j] == 0) {
-                    $array[$i][$j] = 1;
+                if($array[$i][$j] == '0') {
+                    $array[$i][$j] = '1,';
                 } else {
-                    $array[$i][$j] = 0;
+                    $array[$i][$j] = '0,';
                 }
             }
 
             if(strpos($line, 'on') !== false) {
-                $array[$i][$j] = 1;
+                $array[$i][$j] = '1,';
             }
 
             if(strpos($line, 'off') !== false) {
-                $array[$i][$j] = 0;
+                $array[$i][$j] = '0,';
             }
         }
     }
