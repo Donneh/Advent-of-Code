@@ -43,7 +43,7 @@ function amountOfNiceString($input) {
     return $nice;
 }
 
-echo amountOfNiceString($input);
+//echo amountOfNiceString($input);
 //echo doubleLetter('rvlwikuqdbpjuvoo') . PHP_EOL;
 //echo amountOfVowels('rvlwikuqdbpjuvoo') . PHP_EOL;
 //var_dump(containsNaughty('rvlwikuqdbpjuvoo'));
